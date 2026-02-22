@@ -1,6 +1,6 @@
 <style>
 /* ============================================================
-   NEUE CI & VARIABLEN (Ergänzt um Brand Guide Farben)
+   MENDATO CI VARIABLEN (Global)
    ============================================================ */
 :root {
   --brand:        #07fbb5; /* Euer Neon-Grün */
@@ -16,7 +16,7 @@
   --bg:           #ffffff;
   --bg2:          #f6f8fa;
   --bg3:          #eef1f4;
-  --bg-glow:      #f8fafc; /* Kühleres Off-White für den Hero */
+  --bg-glow:      #f8fafc; /* Kühleres Off-White */
   --border:       #e2e7eb;
   
   --radius:       12px;
@@ -29,7 +29,7 @@
   --shadow-float: 0 24px 64px -10px rgba(10, 51, 107, 0.15);
   --shadow-glow:  0 0 80px rgba(7, 251, 181, 0.3);
   
-  /* Typografie-System aktualisiert */
+  /* Typografie-System */
   --font-heading: 'Montserrat', system-ui, sans-serif;
   --font-body:    'Inter', system-ui, sans-serif;
   --font:         var(--font-body);
@@ -39,7 +39,7 @@
 }
 
 /* ============================================================
-   DER NEUE "HEFTIGE" HERO BEREICH
+   STARTSEITE: HERO SECTION (Heftiges Level)
    ============================================================ */
 .hero-heftig {
   position: relative;
@@ -74,4 +74,154 @@
 .hero-content {
   position: relative;
   z-index: 1;
-  padding-
+  padding-left: max(0px, calc((100vw - var(--max)) / 2));
+}
+
+/* ── Typografie & Badges ── */
+.hero-badge-heftig {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 99px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 14px rgba(10, 51, 107, 0.2);
+}
+
+.hero-badge-dot-heftig {
+  width: 8px; height: 8px;
+  background: var(--brand);
+  border-radius: 50%;
+  animation: pulse-heftig 2s ease-in-out infinite;
+}
+
+@keyframes pulse-heftig { 
+  0%,100%{opacity:1; transform:scale(1)} 
+  50%{opacity:.5; transform:scale(1.4)} 
+}
+
+.hero-heftig h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero-heftig .subtext {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--ink2);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 540px;
+}
+
+/* ── Buttons ── */
+.hero-actions-heftig {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.btn-heftig {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-heftig.primary {
+  background: var(--brand);
+  color: var(--primary);
+  box-shadow: 0 8px 24px rgba(7, 251, 181, 0.3);
+}
+
+.btn-heftig.primary:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+  background: #00ffb4;
+}
+
+.btn-heftig.secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--border);
+}
+
+.btn-heftig.secondary:hover {
+  border-color: var(--primary);
+  background: #ffffff;
+}
+
+.hero-note-heftig {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--ink4);
+}
+
+/* ── Mockup Container (Rechte Seite) ── */
+.hero-mockup-container {
+  position: relative;
+  z-index: 1;
+  perspective: 1000px;
+}
+
+.hero-mockup-base {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-float);
+  height: 600px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  transform: rotateY(-5deg) rotateX(5deg);
+  transition: transform 0.5s ease;
+}
+
+.hero-mockup-base:hover {
+  transform: rotateY(0deg) rotateX(0deg);
+}
+
+/* Mobile Anpassung */
+@media (max-width: 991px) {
+  .hero-heftig {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 100px 20px 60px;
+  }
+  .hero-content {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-actions-heftig {
+    justify-content: center;
+  }
+  .hero-mockup-base {
+    transform: none;
+    height: 400px;
+  }
+}
+</style>
